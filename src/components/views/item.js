@@ -2,14 +2,31 @@ const c = React.createElement;
 
 const Item = (props)=> c('div',{className:'col'},
                           c('div',{className:'card shadow-sm'},
-                            c('img',{className:"bd-placeholder-img card-img-top",src:props.image,width:"80%",height:"225"}),
+                            c('img',{
+                                  className:"bd-placeholder-img card-img-top",
+                                  src:props.image,
+                                  width:"80%",
+                                  height:"225"
+                                }
+                              ),
                             c('div',{className:'card-body'},
                               c('h4',null,props.title),
                               c('p',{className:'card-text'},props.description),
                               c('div',{className:'d-flex justify-content-between align-items-center'},
                                 c('div',{className:'btn-group'},
-                                  c('button',{type:"button",className: "btn btn-sm btn-outline-secondary"},"Comprar"),
-                                  c('button',{type:"button",className: "btn btn-sm btn-outline-secondary"},"+ Favoritos"),
+                                  c('button',{
+                                      type:"button",
+                                      className: "btn btn-sm btn-outline-secondary",
+                                      onClick:()=>props.ClickCompra(props.id)
+                                    },
+                                    "Comprar"
+                                  ),
+                                  c('button',{
+                                      type:"button",
+                                      className: "btn btn-sm btn-outline-secondary"
+                                    },
+                                    "+ Favoritos"
+                                  ),
                                 ),
                                 c('small',{className:'text-muted'},`$ ${props.price}`)
                               )

@@ -10,6 +10,10 @@ class Frame extends React.Component {
         this.state = {products:[]};
     }
 
+    ClickCompra(id_prod){
+        alert("!Artículo Añadido al carrito!"+id_prod )
+    }
+
     componentDidMount() { //hook que se llama cuando el componente es montado en el DOM
       
       fetch('https://fakestoreapi.com/products/?limit=9')
@@ -32,7 +36,7 @@ class Frame extends React.Component {
     render(){
       return c('div',{className:"container"},
                 c(Header,null),
-                c(Content,{products:this.state.products})
+                c(Content,{products:this.state.products,ClickCompra:this.ClickCompra})
               )
     }
 }
