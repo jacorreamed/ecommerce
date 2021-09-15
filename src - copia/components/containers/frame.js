@@ -1,6 +1,7 @@
 import Header from '../views/header.js'
 import Content from '../containers/content.js'
 
+const c = React.createElement;
 
 class Frame extends React.Component {
     constructor(props){
@@ -33,10 +34,8 @@ class Frame extends React.Component {
     }
 
     render(){
-      return (<div className="container">
-              <Header/>
-              <Content products={this.state.products} ClickCompra={this.ClickCompra}/>
-            </div>)
+      return c('div',{className:"container"}, c(Header,null), c(Content,{products:this.state.products,ClickCompra:this.ClickCompra})
+              )
     }
 }
 
