@@ -16,6 +16,7 @@ const Authorization = ()=>{
       setTypeAction(type)
     }
     
+    
     return (
         <Frame renderHeader={<SingleHeader/>}>
           <Selector handleClick={handleClick}/>
