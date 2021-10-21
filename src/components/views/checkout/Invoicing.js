@@ -1,20 +1,18 @@
-import React from 'react'
+import React,{useState} from 'react'
+
 
 const Invoicing = (props)=>{
-  
+
     return (
         <div className="col-md-7 col-lg-8">
           <h4 className="mb-3">Datos de Facturación</h4>
           <form onSubmit={props.handleSubmit} className="needs-validation" noValidate>
             <div className="row g-3">
-              <div className="col-sm-6">
-                <label htmlFor="firstName" className="form-label">Nombre</label>
+              <div className="col-sm-12">
+                <label htmlFor="firstName" className="form-label">Nombres y Apellidos</label>
                 <input name="firstName" onChange={props.handleChange} type="text" className="form-control" id="firstName" placeholder="" value={props.firstName} required/>
               </div>
-              <div className="col-sm-6">
-                  <label htmlFor="lastName" className="form-label">Apellido</label>
-                  <input name="lastName" type="text" onChange={props.handleChange} className="form-control" id="lastName" placeholder="" value={props.lastName} required/>
-              </div>
+              
               <div className="col-12">
                   <label htmlFor="address" className="form-label">Dirección</label>
                   <input name="address" type="text" onChange={props.handleChange} className="form-control" id="address" placeholder="calle falsa 123" value={props.address} required/>

@@ -1,17 +1,19 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import { Redirect } from 'react-router-dom';
 import CheckoutFrame from '../views/checkout/checkoutframe.js'
 import Cart from '../views/checkout/cart.js'
 import Invoicing from '../views/checkout/Invoicing.js';
 import DivComponent from '../views/divComponent.js'; //stateless component
 import Frame from '../views/frame.js'
-import {countItems,getItems} from '../../utils/localStorage'
+import {getItems, getSession} from '../../utils/localStorage'
 
 
 const Buy = ()=>{
 
+  const Session = getSession()
+
   const [Form,setForm] = React.useState({
-    firstName:"",
-    lastName:"",
+    firstName: Session.name,
     address:"",
     country:"",
     state:"",
@@ -24,9 +26,11 @@ const Buy = ()=>{
     ccCvv:""
   })
 
+  const [session,setSession]=useState(getSession());
 
-  React.useEffect(() => {
-    //console.log("total a pagar",CalcularTotalPagar)
+  useEffect(() => {
+    //if(!getSession())
+
   },[])
 
   const CalcularTotalPagar = (()=>{
@@ -61,15 +65,17 @@ const Buy = ()=>{
     
   }
 
-  return(
-        <Frame cant_items={items.length}>
+  return( 
+        session?<Frame cant_items={items.length}>
           <CheckoutFrame>
             <DivComponent innerClassName="row g-5">
               <Cart items={items} cant_items={items.length}  totalPagar={CalcularTotalPagar}/>
               <Invoicing handleChange={handleChange} handleChangeCheckInputs={handleChangeCheckInputs} handleSubmit={handleSubmit}  {...Form}/>
             </DivComponent>
           </CheckoutFrame>
-        </Frame>)
+        </Frame>:<Redirect
+            to="auth"
+        />)
 }
 
 export default Buy;

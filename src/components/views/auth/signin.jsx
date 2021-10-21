@@ -1,5 +1,4 @@
 import React from "react";
-import { GoogleLogin } from 'react-google-login';
 
 const SignIn = props =>{
 
@@ -11,13 +10,13 @@ const SignIn = props =>{
           <h2 className="fw-bold mb-0">{props.typeAction=="signin"?"Iniciar Sesión":"Registrarse Gratis"}</h2>
         </div>
         <div className="modal-body p-5 pt-0">
-          <form className="">
+          <form className="" onSubmit={props.handleCredentialResponse}>
             <div className="form-floating mb-3">
-              <input type="email" className="form-control rounded-4" id="floatingInput" placeholder="name@example.com"/>
+              <input type="email" className="form-control rounded-4" id="floatingInput" name="email" onChange={props.handleChange} placeholder="name@example.com"/>
               <label htmlFor="floatingInput">Email</label>
             </div>
             <div className="form-floating mb-3">
-              <input type="password" className="form-control rounded-4" id="floatingPassword" placeholder="Password"/>
+              <input type="password" className="form-control rounded-4" id="floatingPassword" name="password" onChange={props.handleChange} placeholder="Password"/>
               <label htmlFor="floatingPassword">Contraseña</label>
             </div>
             <button className="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">Continuar</button>

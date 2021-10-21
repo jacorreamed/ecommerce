@@ -37,8 +37,25 @@ export const getItems = () => {
     return JSON.parse(data_shopping_cart_customer)
 }
 
-export const deleteCustomer = ()=> localStorage.removeItem("customer")
+export const getSession = () => {
 
-export const addCustomer = (tem)=>localStorage.setItem("customer",JSON.stringify(tem))
+    let data = sessionStorage.getItem("auth");
 
-export const getCustomer = ()=>localStorage.getItem("customer")||false
+    if(data)
+    return JSON.parse(data)
+    
+    return false
+};
+
+export const setSession = data => {
+
+    sessionStorage.setItem("auth",JSON.stringify(data))
+
+}
+export const deleteSession =   ()  => sessionStorage.removeItem("auth")
+
+export const deleteCustomer =   ()  => localStorage.removeItem("customer")
+
+export const addCustomer    =   tem => localStorage.setItem("customer",JSON.stringify(tem))
+
+export const getCustomer    =   ()  => localStorage.getItem("customer")||false
