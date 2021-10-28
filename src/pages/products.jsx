@@ -1,10 +1,10 @@
 import React from 'react'
-import Content from '../views/content.js'
-import Frame from '../views/frame.js'
-import {setItemToShoppingCart,countItems} from '../../utils/localStorage'
-import {getProducts} from '../../utils/api.js'
+import Content from 'components/content.js'
+import Frame from 'components/frame'
+import {setItemToShoppingCart,countItems} from '../utils/localStorage'
+import {getProducts} from '../utils/api.js'
 
-import '../views/auth/style.css'
+import '../components/auth/style.css'
 
 class Products extends React.Component {
     constructor(props){

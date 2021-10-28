@@ -1,11 +1,11 @@
 import React,{useEffect,useState} from 'react'
 import { Redirect } from 'react-router-dom';
-import CheckoutFrame from '../views/checkout/checkoutframe.js'
-import Cart from '../views/checkout/cart.js'
-import Invoicing from '../views/checkout/Invoicing.js';
-import DivComponent from '../views/divComponent.js'; //stateless component
-import Frame from '../views/frame.js'
-import {getItems, getSession} from '../../utils/localStorage'
+import CheckoutFrame from 'components/checkout/checkoutframe'
+import Cart from 'components/checkout/cart'
+import Invoicing from 'components/checkout/Invoicing';
+import DivComponent from 'components/divComponent'; //stateless component
+import Frame from 'components/frame'
+import {getItems, getSession} from 'utils/localStorage'
 
 
 const Buy = ()=>{

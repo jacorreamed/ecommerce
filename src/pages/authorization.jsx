@@ -1,11 +1,11 @@
 import React,{useState,useEffect,createRef} from 'react'
 import jwt_decode from 'jwt-decode';
-import Frame from "../views/frame";
-import SingleHeader from "../views/singleHeader";
-import Selector from "../views/auth/selector"
-import SignIn from "../views/auth/signin"
-import {setSession} from "../../utils/localStorage"
-import default_user from '../../img/default-user.svg'
+import Frame from "../components/frame";
+import SingleHeader from "../components/singleHeader";
+import Selector from "../components/auth/selector"
+import SignIn from "../components/auth/signin"
+import {setSession} from "../utils/localStorage"
+import default_user from 'img/default-user.svg'
 
 const Authorization = ()=>{
 

@@ -12,7 +12,14 @@ module.exports = {
       assetModuleFilename: 'images/[hash][ext][query]'
   },
   resolve: {
-    extensions: [".js",".jsx"]
+    extensions: [".js",".jsx"],
+    alias: {
+      img:        path.join(__dirname,"src/assets/img"),
+      components: path.join(__dirname,"src/components"),
+      pages:      path.join(__dirname,"src/pages"),
+      utils:      path.join(__dirname,"src/utils"),
+      routes:     path.join(__dirname,"src/routes")
+    },
   },
   module: { //sirver para decirle a webpack como transformar archivos que no sean js o json
     rules: [
@@ -33,7 +40,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'public/index.html',
       title: 'Mercado libre',
       minify: true,
     }),
