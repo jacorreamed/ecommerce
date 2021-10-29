@@ -1,47 +1,49 @@
+import React from 'react'
 import Products from 'pages/products.jsx';
 import Buy from 'pages/buy.jsx'
 import Authorization from 'pages/authorization.jsx'
+import Detail from 'pages/detail'
 
 const AppRoutes = [
     {
-        key: 1,
+        key: 0,
         path: "/",
         component: Products
     },
     {
-        key: 0,
-        path: "/item/:id-item",
-        component: Products
+        key: 1,
+        path: "/detail/:idItem",
+        component: Detail
     },
     {
-        key: 1,
+        key: 2,
         path: "/buy",
         component: Buy
     },
     {
-        key: 2,
+        key: 3,
         path: "/auth",
         component: Authorization
     },
     {
-        key: 3,
+        key: 4,
         path: "/password-recovery",
         component: Authorization
     },
     {
-        key: 4,
+        key: 5,
         path: "/profile",
         component: Authorization
     },
     {
-        key: 5,
+        key: 6,
         path: "/orders",
         component: Authorization
     },
     {
-        key: 6,
+        key: 7,
         path: "*", //not found
-        component: Authorization
+        component: ()=><h1>not found</h1>
     }
 ]
 

@@ -22,6 +22,7 @@ class Products extends React.Component {
     }
 
     ClickCompra(id_prod){
+        //deprecated
        
         setItemToShoppingCart(id_prod)
         

@@ -1,5 +1,5 @@
 import React from 'react'
-import Item from './item.js'
+import Item from './item'
 import Loader from './loader.jsx'
 
 const Content = ({products,ClickCompra,listar,handleChangeList,is_loading})=>{
@@ -22,8 +22,7 @@ const Content = ({products,ClickCompra,listar,handleChangeList,is_loading})=>{
           </div>
           </div>
         </div>
-        <div className = 'row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3'>
-
+        <div className = 'row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4'>
           {is_loading?<Loader/>:products.map((prod,idx)=><Item info={prod} key={prod.id} ClickCompra={ClickCompra}/>)}
         </div>
       </div>
