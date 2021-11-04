@@ -13,7 +13,7 @@ const Item = ({info,ClickCompra})=>
               <div className="btn-group">
                   <Link
                     className="btn btn-sm btn-outline-secondary"
-                    to={`/detail/${info.id}`}
+                    to={`/detail/${info.id}/`}
                   >
                     <i className="bi bi-eye"></i> Ver
                   </Link>

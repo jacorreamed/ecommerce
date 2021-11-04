@@ -9,7 +9,8 @@ module.exports = {
   output : {
       path: path.join(__dirname,"dist"),
       filename: "bundle.js",
-      assetModuleFilename: 'images/[hash][ext][query]'
+      assetModuleFilename: 'images/[hash][ext][query]',
+      publicPath: '/'
   },
   resolve: {
     extensions: [".js",".jsx"],
@@ -48,5 +49,6 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true,
+    port:8080
   },
 }
