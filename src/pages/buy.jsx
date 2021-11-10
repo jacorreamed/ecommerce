@@ -10,10 +10,10 @@ import {getItems, getSession} from 'utils/localStorage'
 
 const Buy = ()=>{
 
-  const Session = getSession()
+  const [session,setSession]=useState(getSession()); //TODO: crear un custom hook para manejar la sesión
 
   const [Form,setForm] = React.useState({
-    firstName: Session.name,
+    firstName: session.name,
     address:"",
     country:"",
     state:"",
@@ -26,7 +26,7 @@ const Buy = ()=>{
     ccCvv:""
   })
 
-  const [session,setSession]=useState(getSession());
+  
 
   useEffect(() => {
     //if(!getSession())
@@ -37,7 +37,7 @@ const Buy = ()=>{
     return getItems().reduce((prev,curr)=>prev+curr.price,0)
   })()
 
-  const items = getItems()
+  const items = getItems() //TODO: esto se debería mover al frame
 
 
   const handleChange = (event)=>{

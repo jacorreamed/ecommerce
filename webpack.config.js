@@ -19,7 +19,8 @@ module.exports = {
       components: path.join(__dirname,"src/components"),
       pages:      path.join(__dirname,"src/pages"),
       utils:      path.join(__dirname,"src/utils"),
-      routes:     path.join(__dirname,"src/routes")
+      routes:     path.join(__dirname,"src/routes"),
+      hooks:      path.join(__dirname,"src/hooks")
     },
   },
   module: { //sirver para decirle a webpack como transformar archivos que no sean js o json

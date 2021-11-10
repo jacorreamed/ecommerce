@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Item = ({info,ClickCompra})=>
+const Item = ({info})=>
   <div className="col">
     <div className="card shadow-sm">
         <img src={info.images[0]} width="100%" height="225"/>
