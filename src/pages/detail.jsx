@@ -5,7 +5,13 @@ import Frame from 'components/frame'
 import Carousel from 'components/carousel'
 import {useSigleProduct} from 'hooks/useProducts'
 
+import Stars from 'components/stars'
+import Price from 'components/price'
+import ProductTitle from 'components/productTitle'
+import BuyButton from 'components/buyButton'
+
 const Detail = ()=>{
+  
 
     const {idItem}  = useParams()
     const product   = useSigleProduct(idItem)
@@ -33,14 +39,10 @@ const Detail = ()=>{
               <div className="card">
                 <div className="card-body">
                   <a href="#" className="link-secondary">Nuevo | 10 vendidos</a>
-                  <h5 className="card-title">{product.title}</h5>
-                  <i class="bi bi-star"></i>
-                  <i class="bi bi-star"></i>
-                  <i class="bi bi-star"></i>
-                  <i class="bi bi-star"></i>
-                  <div className="d-grid gap-2">
-                    <button className="btn btn-primary" type="button">Comprar ahora</button>
-                  </div>
+                  <ProductTitle title={product.title}/>
+                  <Stars fill="4"/>
+                  <Price value={product.price}/>
+                  <BuyButton/>
                 </div>
               </div>
             </div>
