@@ -1,7 +1,7 @@
 import React from 'react'
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
 } from "react-router-dom";
 
@@ -22,16 +22,16 @@ const App = ()=>{
 
     return(
       <Router>
-        <Switch>
-          <Route exact path="/"><Products/></Route>
-          <Route exact path="/detail/:idItem">< Detail/></Route>
-          <Route exact path="/buy"><Buy/></Route>
-          <Route exact path="/auth"><Authorization/></Route>
-          <Route exact path="/password-recovery"><Products/></Route>
-          <Route exact path="/profile"><Products/></Route>
-          <Route exact path="/orders"><Products/></Route>
-          <Route exact path="*">{()=><h1>not found</h1>}</Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Products/>}/>
+          <Route path="/detail/:idItem" element={< Detail/>}/>
+          <Route path="/buy" element={<Buy/>}/>
+          <Route path="/auth" element={<Authorization/>}/>
+          <Route path="/password-recovery" element={<Products/>}/>
+          <Route path="/profile" element={<Products/>}/>
+          <Route path="/orders" element={<Products/>}/>
+          <Route path="*" element={()=><h1>not found</h1>}/>
+        </Routes>
       </Router>
     )
 }
