@@ -28,8 +28,8 @@ const Header = ({amount})=>{
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             
             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><NavLink  to="/" activeClassName="text-white" exact className="nav-link px-2 text-secondary"><i className="bi bi-bag"></i> Productos</NavLink></li>
-              <li><NavLink  to="/buy" activeClassName="text-white" exact className="nav-link px-2 text-secondary"><i className="bi bi-cart"></i> Carrito de compras ({amount})</NavLink></li>
+              <li><NavLink  to="/"   className="nav-link px-2 text-secondary"><i className="bi bi-bag"></i> Productos</NavLink></li>
+              <li><NavLink  to="/buy" className="nav-link px-2 text-secondary"><i className="bi bi-cart"></i> Carrito de compras ({amount})</NavLink></li>
             </ul>
             
             <div className="text-end">

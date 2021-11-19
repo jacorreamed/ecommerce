@@ -1,4 +1,6 @@
 import React,{useState,useEffect,createRef} from 'react'
+import {useNavigate} from 'react-router-dom'
+
 import jwt_decode from 'jwt-decode';
 import Frame from "../components/frame";
 import SingleHeader from "../components/singleHeader";
@@ -16,6 +18,8 @@ const Authorization = ()=>{
       email:"",
       password:""
     });
+
+    let navigate = useNavigate();
 
 
     const handleChange = (e)=>{
@@ -51,8 +55,7 @@ const Authorization = ()=>{
 
       }
       
-
-      window.location.href = "buy"
+      navigate('/buy');
 
       //guardamos los datos de la sesion en sessionStorage
     }

@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { Redirect } from 'react-router-dom';
+import { Navigate,useSearchParams} from 'react-router-dom';
 import CheckoutFrame from 'components/checkout/checkoutframe'
 import Cart from 'components/checkout/cart'
 import Invoicing from 'components/checkout/Invoicing';
@@ -11,6 +11,10 @@ import {getItems, getSession} from 'utils/localStorage'
 const Buy = ()=>{
 
   const [session,setSession]=useState(getSession()); //TODO: crear un custom hook para manejar la sesión
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  console.log(searchParams.get("cant"))
+
 
   const [Form,setForm] = React.useState({
     firstName: session.name,
@@ -69,12 +73,12 @@ const Buy = ()=>{
         session?<Frame cant_items={items.length}>
           <CheckoutFrame>
             <DivComponent innerClassName="row g-5">
-              <Cart items={items} cant_items={items.length}  totalPagar={CalcularTotalPagar}/>
+              {/*<Cart items={items} cant_items={items.length}  totalPagar={CalcularTotalPagar}/>*/}
               <Invoicing handleChange={handleChange} handleChangeCheckInputs={handleChangeCheckInputs} handleSubmit={handleSubmit}  {...Form}/>
             </DivComponent>
           </CheckoutFrame>
-        </Frame>:<Redirect
-            to="auth"
+        </Frame>:<Navigate
+            to="/auth"
         />)
 }
 

@@ -1,26 +1,36 @@
-import React from 'react'
-import { useParams,Redirect } from 'react-router-dom'
+import React, {useRef,useState,useContext} from 'react'
+import { useParams } from 'react-router-dom'
 
 import Frame from 'components/frame'
 import Carousel from 'components/carousel'
 import {useSigleProduct} from 'hooks/useProducts'
+import {productContext} from 'state/globalState'
 
 import Stars from 'components/stars'
 import Price from 'components/price'
 import ProductTitle from 'components/productTitle'
 import BuyButton from 'components/buyButton'
+import Select from 'components/select'
 
 const Detail = ()=>{
   
 
     const {idItem}  = useParams()
     const product   = useSigleProduct(idItem)
-    console.log(product)
+
+    const [cantidad, setCantidad] = useState(1);
+
+    const [state, dispatch] = useContext(productContext);
+
+    const select_cant =  useRef(null);
+
+    const handleSelectChange = ()=> setCantidad(select_cant.current.value)
+
     return (
       <Frame cant_items={0}>
         <div className="container-fluid py-4">
         <div className="row"></div>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center ">
             <div className="col-8 ">
               <div className="card">
                 <div className="card-body">
@@ -42,7 +52,13 @@ const Detail = ()=>{
                   <ProductTitle title={product.title}/>
                   <Stars fill="4"/>
                   <Price value={product.price}/>
-                  <BuyButton/>
+                  <div className="row  mt-3 align-items-center">
+                    <div className="col-4">Cantidad: </div>
+                    <div className="col-4">
+                      <Select prop_ref={select_cant} handleSelectChange={handleSelectChange} value={cantidad}/>
+                    </div>
+                  </div>
+                  <BuyButton id_prod={idItem} cantidad={cantidad}/>
                 </div>
               </div>
             </div>
