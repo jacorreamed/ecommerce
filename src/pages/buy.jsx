@@ -1,6 +1,7 @@
-import React,{useEffect,useState} from 'react'
-import {Navigate} from 'react-router-dom';
+import React,{useEffect,useState,useContext} from 'react'
+import {Navigate,useNavigate} from 'react-router-dom';
 import CheckoutFrame from 'components/checkout/checkoutframe'
+import {useSigleProduct} from 'hooks/useProducts'
 import Cart from 'components/checkout/cart'
 import Invoicing from 'components/checkout/Invoicing';
 import DivComponent from 'components/divComponent'; //stateless component
@@ -11,11 +12,11 @@ import {productContext} from 'state/globalState'
 
 const Buy = ()=>{
 
+  const navigate = useNavigate()
   const [session,setSession]=useState(getSession()); //TODO: crear un custom hook para manejar la sesión
 
-  const [state, dispatch] = useContext(productContext);
 
-  console.log(state);
+  const [shoppingCarState, dispatch] = useContext(productContext);
 
   const [Form,setForm] = React.useState({
     firstName: session.name,
@@ -31,6 +32,10 @@ const Buy = ()=>{
     ccCvv:""
   })
 
+  let product = false;
+  
+  if(shoppingCarState.shoppingCar.length)
+  product = useSigleProduct(shoppingCarState.shoppingCar[0].prod_id);
   
 
   useEffect(() => {
@@ -39,7 +44,7 @@ const Buy = ()=>{
   },[])
 
   const CalcularTotalPagar = (()=>{
-    return getItems().reduce((prev,curr)=>prev+curr.price,0)
+    return [product].reduce((prev,curr)=>prev+curr.price,0)
   })()
 
   const items = getItems() //TODO: esto se debería mover al frame
@@ -74,7 +79,7 @@ const Buy = ()=>{
         session?<Frame cant_items={items.length}>
           <CheckoutFrame>
             <DivComponent innerClassName="row g-5">
-              {/*<Cart items={items} cant_items={items.length}  totalPagar={CalcularTotalPagar}/>*/}
+              <Cart items={[product]} cant_items={[product].length}  totalPagar={CalcularTotalPagar}/>
               <Invoicing handleChange={handleChange} handleChangeCheckInputs={handleChangeCheckInputs} handleSubmit={handleSubmit}  {...Form}/>
             </DivComponent>
           </CheckoutFrame>
