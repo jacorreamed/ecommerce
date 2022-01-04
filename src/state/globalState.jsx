@@ -7,10 +7,10 @@ const initialState = {
 }
 
 const reducer = (state, action) => {
-
+    
     switch (action.type) {
         case 'ADD_PRODUCT':
-            return {...state,shoppingCar:[...state.shoppingCar,action.product]}
+            return {...state,shoppingCar:[...state.shoppingCar,action.payload]}
         default:
             return state
     }

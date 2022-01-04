@@ -1,5 +1,5 @@
 import React, {useRef,useState,useContext} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,useNavigate } from 'react-router-dom'
 
 import Frame from 'components/frame'
 import Carousel from 'components/carousel'
@@ -14,7 +14,7 @@ import Select from 'components/select'
 
 const Detail = ()=>{
   
-
+    const navigate = useNavigate()
     const {idItem}  = useParams()
     const product   = useSigleProduct(idItem)
 
@@ -25,6 +25,19 @@ const Detail = ()=>{
     const select_cant =  useRef(null);
 
     const handleSelectChange = ()=> setCantidad(select_cant.current.value)
+
+    const handleClickBuyButton = ()=> {
+      dispatch(
+        {
+          type:"ADD_PRODUCT",
+          payload:{
+            prod_id:idItem,
+            cantidad:cantidad
+          }
+        }
+      )
+      navigate('/buy');
+    }
 
     return (
       <Frame cant_items={0}>
@@ -58,7 +71,7 @@ const Detail = ()=>{
                       <Select prop_ref={select_cant} handleSelectChange={handleSelectChange} value={cantidad}/>
                     </div>
                   </div>
-                  <BuyButton id_prod={idItem} cantidad={cantidad}/>
+                  <BuyButton handleClickBuyButton={handleClickBuyButton} />
                 </div>
               </div>
             </div>

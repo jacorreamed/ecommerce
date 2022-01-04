@@ -1,20 +1,21 @@
 import React,{useEffect,useState} from 'react'
-import { Navigate,useSearchParams} from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
 import CheckoutFrame from 'components/checkout/checkoutframe'
 import Cart from 'components/checkout/cart'
 import Invoicing from 'components/checkout/Invoicing';
 import DivComponent from 'components/divComponent'; //stateless component
 import Frame from 'components/frame'
 import {getItems, getSession} from 'utils/localStorage'
+import {productContext} from 'state/globalState'
 
 
 const Buy = ()=>{
 
   const [session,setSession]=useState(getSession()); //TODO: crear un custom hook para manejar la sesión
-  const [searchParams, setSearchParams] = useSearchParams();
 
-  console.log(searchParams.get("cant"))
+  const [state, dispatch] = useContext(productContext);
 
+  console.log(state);
 
   const [Form,setForm] = React.useState({
     firstName: session.name,

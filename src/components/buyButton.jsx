@@ -1,14 +1,13 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 
-const BuyButton = ({id_prod,cantidad}) =>(<div className="d-grid gap-2 mt-5">
-                        <Link
-                            to={`/buy/${id_prod}?cant=${cantidad}`}
+const BuyButton = ({handleClickBuyButton}) =>(<div className="d-grid gap-2 mt-5">
+                        <button
+                            onClick = {handleClickBuyButton}
                             className="btn btn-primary"
                             type="button"
                             >
                                 Comprar ahora
-                            </Link>
+                            </button>
                     </div>)
 
 export default BuyButton;
