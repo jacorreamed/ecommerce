@@ -25,12 +25,13 @@ export const useProducts = limit => {
 
 export const useSigleProduct = id => {
 
-    const [product,setProduct] = useState({images:[]})
+    const [product,setProduct] = useState({images:[], loading: true})
 
     useEffect(()=>{
         fetch(`${URL_API}/${id}`)
         .then(res=>res.json())
         .then(data=>{
+            data.loading = false;
             setProduct(data)
         }).catch(e=>{
             console.log(e)

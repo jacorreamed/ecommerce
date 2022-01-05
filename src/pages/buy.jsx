@@ -33,7 +33,7 @@ const Buy = ()=>{
   })
 
   let product = false;
-  
+  console.log("shoppingCarState.shoppingCar.length",shoppingCarState.shoppingCar[0]);
   if(shoppingCarState.shoppingCar.length)
   product = useSigleProduct(shoppingCarState.shoppingCar[0].prod_id);
   
@@ -44,10 +44,11 @@ const Buy = ()=>{
   },[])
 
   const CalcularTotalPagar = (()=>{
-    return [product].reduce((prev,curr)=>prev+curr.price,0)
+    if(product.loading)
+    return 0
+    let total = [product].reduce((prev,curr)=>prev+curr.price,0)
+    return total*shoppingCarState.shoppingCar[0].cantidad
   })()
-
-  const items = getItems() //TODO: esto se debería mover al frame
 
 
   const handleChange = (event)=>{
@@ -74,16 +75,19 @@ const Buy = ()=>{
       alert(`compra por USD ${CalcularTotalPagar} realizada exitosamente`)
     
   }
+  console.log("hola",product);
 
   return( 
-        session?<Frame cant_items={items.length}>
+        session?
+        !product.loading?
+        <Frame cant_items={0}>
           <CheckoutFrame>
             <DivComponent innerClassName="row g-5">
-              <Cart items={[product]} cant_items={[product].length}  totalPagar={CalcularTotalPagar}/>
+              <Cart items={[product]} cant_items={shoppingCarState.shoppingCar[0].cantidad}  totalPagar={CalcularTotalPagar}/>
               <Invoicing handleChange={handleChange} handleChangeCheckInputs={handleChangeCheckInputs} handleSubmit={handleSubmit}  {...Form}/>
             </DivComponent>
           </CheckoutFrame>
-        </Frame>:<Navigate
+        </Frame>:<h1>Cargando...</h1>:<Navigate
             to="/auth"
         />)
 }
